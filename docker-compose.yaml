@@ -16,9 +16,10 @@ services:
       - DOCKER_MULTI_NODE_CLUSTER=false
       - LOW_CARDINAL_EXCEPTION_GROUPING=false
     ports:
+      - "54527:54527"
       # - "1777:1777"     # pprof extension
-      - "4317:4317" # OTLP gRPC receiver
-      - "4318:4318" # OTLP HTTP receiver
+      # - "4317:4317" # OTLP gRPC receiver
+      # - "4318:4318" # OTLP HTTP receiver
       # - "8888:8888"     # OtelCollector internal metrics
       # - "8889:8889"     # signoz spanmetrics exposed by the agent
       # - "9411:9411"     # Zipkin port
@@ -27,15 +28,4 @@ services:
       # - "14268:14268"   # Jaeger thrift HTTP
       # - "55678:55678"   # OpenCensus receiver
       # - "55679:55679"   # zPages extension
-    restart: on-failure
-
-  logspout:
-    image: "gliderlabs/logspout:v3.2.14"
-    container_name: signoz-logspout
-    volumes:
-      - /etc/hostname:/etc/host_hostname:ro
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: syslog+tcp://otel-collector:2255
-    depends_on:
-      - otel-collector
     restart: on-failure
