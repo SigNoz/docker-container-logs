@@ -9,7 +9,6 @@ services:
         "--config=/etc/otel-collector-config.yaml",
         "--feature-gates=-pkg.translator.prometheus.NormalizeName"
       ]
-    user: root # required for reading docker container logs
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
     environment:
