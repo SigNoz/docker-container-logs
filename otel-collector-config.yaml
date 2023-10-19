@@ -23,11 +23,11 @@ processors:
     timeout: 10s
 exporters:
   otlp:
-    endpoint: "ingest.{region}.signoz.cloud:443"
+    endpoint: ${env:OTEL_COLLECOTR_ENDPOINT}
     tls:
       insecure: false
     headers:
-      "signoz-access-token": "<SIGNOZ_INGESTION_KEY>"
+      "signoz-access-token": ${env:SIGNOZ_INGESTION_KEY}
   # logging:
   #   verbosity: detailed
 service:

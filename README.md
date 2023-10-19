@@ -1,4 +1,4 @@
 ## Send logs from one host 
 
 
-* replace the value of `<SIGNOZ_INGESTION_KEY>` and `{region}` with appropiate values
+* Add values of `OTEL_COLLECOTR_ENDPOINT` and `SIGNOZ_INGESTION_KEY` in the .env file
